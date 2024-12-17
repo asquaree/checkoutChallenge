@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/api/v1")
+@RestController("api")
+//@RequestMapping("/api")
 public class PaymentGatewayController {
 
   @Autowired
@@ -23,6 +23,7 @@ public class PaymentGatewayController {
   public ResponseEntity<Object> getPostPaymentEventById(@PathVariable UUID id) {
 
     try {
+      ApiResponse apiResponse = new ApiResponse("Success", null, HttpStatus.OK.value());
       return new ResponseEntity<>(paymentGatewayService.getPaymentById(id), HttpStatus.OK);
     } catch (Exception e) {
       e.printStackTrace();

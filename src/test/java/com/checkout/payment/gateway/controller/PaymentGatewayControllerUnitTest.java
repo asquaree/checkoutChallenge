@@ -1,9 +1,7 @@
-package com.checkout.payment.gateway.service;
+package com.checkout.payment.gateway.controller;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-import com.checkout.payment.gateway.controller.PaymentGatewayController;
-import com.checkout.payment.gateway.repository.PaymentsRepository;
+import com.checkout.payment.gateway.service.PaymentGatewayService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,24 +15,23 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
-class PaymentGatewayServiceTest {
-
+@ExtendWith(MockitoExtension.class)
+public class PaymentGatewayControllerUnitTest {
 
   @InjectMocks
-  private PaymentGatewayService paymentGatewayService;
+  private PaymentGatewayController paymentGatewayController;
 
   @Mock
-  private PaymentsRepository paymentsRepository;
+  private PaymentGatewayService paymentGatewayService;
 
+  private MockMvc mvc;
 
 
   @BeforeEach
   public void setUp() {
     MockitoAnnotations.openMocks(this);
+    mvc = MockMvcBuilders.standaloneSetup(paymentGatewayController).build();
   }
-  //unit
-
-
-  //integration
-
+  
+  
 }
